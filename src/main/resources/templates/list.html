@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shopping list</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="/buttonsScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+<h1>Shopping list</h1>
+
+<form method="post">
+    <input type="text" name="newProduct">
+    <input type="submit" value="Add new product">
+</form>
+
+<br>
+
+<div th:each="product : ${products}" >
+    <nowrap th:id="${product.id}" style="background-color: white">
+        <input type="checkbox"
+               class="checked"
+               th:checked="${product.getIsBuy()}"
+               th:attr="id=${product.id}" />
+
+        <s th:if="${product.getIsBuy()}">
+                <nobr th:text="${product.name}">Продукт</nobr>
+            </s>
+        <nobr th:if="${!product.getIsBuy()}" th:text="${product.name}">Продукт</nobr>
+
+        <button
+                class="delete"
+                th:attr="id=${product.id}">
+            Delete
+        </button>
+
+    </nowrap>
+    <br>
+</div>
+
+</body>
+</html>
