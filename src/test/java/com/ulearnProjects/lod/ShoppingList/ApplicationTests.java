@@ -1,4 +1,4 @@
-package com.example.demoweb;
+package com.ulearnProjects.lod.ShoppingList;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

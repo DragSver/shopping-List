@@ -11,8 +11,9 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public void add(String product) {
+    public boolean add(String product) {
         productRepository.save(new Product(product));
+        return true;
     }
 
     public Product get(Long id){
@@ -23,13 +24,15 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void delete(Long id){
+    public boolean delete(Long id){
         productRepository.deleteById(id);
+        return true;
     }
 
-    public void check(Long id){
+    public boolean check(Long id){
         Product product = get(id);
         product.checked();
         productRepository.save(product);
+        return true;
     }
 }
